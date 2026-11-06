@@ -64,7 +64,7 @@ button{font-family:inherit}
 }
 .nav.scrolled{background:rgba(10,10,13,.82);backdrop-filter:blur(14px);border-color:var(--line)}
 .nav-in{
-  width:min(1380px,94vw);margin:0 auto;height:64px;
+  width:min(1800px,94vw);margin:0 auto;height:64px;
   display:flex;align-items:center;justify-content:space-between;gap:20px;
 }
 .nav-cta{
@@ -83,11 +83,11 @@ button{font-family:inherit}
 .nav-links a:hover::after{width:100%}
 @media(max-width:760px){.nav-links{display:none}}
 
-.hero .container{width:min(1380px,94vw)}
+.hero .container{width:min(1800px,94vw)}
 
 /* ---------- hero ---------- */
 .hero{
-  position:relative;min-height:100svh;display:flex;flex-direction:column;
+  position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;
   overflow:hidden;background:
     radial-gradient(90vw 60vh at 70% 108%,rgba(122,8,18,.55),transparent 60%),
     radial-gradient(60vw 40vh at 12% -10%,rgba(232,23,43,.10),transparent 60%),
@@ -158,6 +158,11 @@ button{font-family:inherit}
 .sp-a{left:48%}
 .sp-b{left:87%}
 .sp-front{left:65%}
+@media(min-width:1500px){
+  .sp-a{left:38%}
+  .sp-b{left:82%}
+  .sp-front{left:56%}
+}
 @media(max-width:760px){
   .sp-a{left:18%}
   .sp-b{left:82%}
@@ -198,12 +203,12 @@ button{font-family:inherit}
     linear-gradient(115deg,transparent 47%,rgba(255,255,255,.025) 47.5%,rgba(255,255,255,.025) 48.2%,transparent 48.7%);
 }
 .hero-est{
-  position:absolute;right:max(4vw,calc((100vw - 1380px)/2));top:38vh;z-index:5;
+  position:absolute;right:max(4vw,calc((100vw - 1800px)/2));top:38vh;z-index:5;
   writing-mode:vertical-rl;font-family:var(--mono);font-size:11px;letter-spacing:.5em;
   color:#8a8794;text-transform:uppercase;
 }
 .hero-brandline{
-  position:absolute;top:108px;right:max(4vw,calc((100vw - 1380px)/2));z-index:5;
+  position:absolute;top:108px;right:max(4vw,calc((100vw - 1800px)/2));z-index:5;
   font-family:var(--disp);font-weight:800;font-size:clamp(30px,3.6vw,54px);
   text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;
   color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.16);
@@ -211,26 +216,6 @@ button{font-family:inherit}
 @media(max-width:1150px){.hero-brandline{display:none}}
 @media(max-width:1150px){.hero-brandline{display:none}}
 @media(max-width:900px){.hero-est,.hero-slash{display:none}}
-
-
-/* бегущая строка */
-.ticker{
-  position:relative;z-index:6;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-  background:rgba(10,10,13,.7);backdrop-filter:blur(8px);overflow:hidden;margin-top:auto;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
-}
-.ticker-in{display:flex;width:max-content;animation:tick 30s linear infinite}
-.ticker:hover .ticker-in{animation-play-state:paused}
-.ti{
-  display:flex;align-items:center;gap:26px;padding:13px 13px;
-  font-family:var(--mono);font-size:12px;letter-spacing:.14em;white-space:nowrap;color:var(--mut);
-}
-.ti b{color:var(--txt);font-weight:500}
-.ti .w{color:var(--red-hot);font-weight:700}
-.ti .l{color:var(--mut2);font-weight:700}
-.ti .dm{width:6px;height:6px;background:var(--red);transform:rotate(45deg);flex:0 0 auto}
-@keyframes tick{to{transform:translateX(-50%)}}
 
 /* ---------- секции общие ---------- */
 section{position:relative}
@@ -558,19 +543,6 @@ footer{border-top:1px solid var(--line);background:var(--bg);position:relative;o
     <div class="sp sp-front"><img src="assets/igor_cut.webp" alt="igorstani" style="height:min(45vh,480px)"><span class="tag">01 · igorstani</span></div>
   </div>
 
-  <div class="ticker">
-    <div class="ticker-in" id="tickerIn">
-      <div class="ti">
-        <span><b>KKK</b> <span class="w">2:0</span> CYBER DOGS</span><span class="dm"></span>
-        <span>WINTER CLASH OPEN · GROUP STAGE</span><span class="dm"></span>
-        <span><b>KKK</b> <span class="l">1:2</span> NEXUS FIVE</span><span class="dm"></span>
-        <span>AUTUMN CUP · SEMIFINAL</span><span class="dm"></span>
-        <span><b>KKK</b> <span class="w">2:1</span> TEAM AURORA</span><span class="dm"></span>
-        <span>WINRATE <span class="w">62%</span> · 128 МАТЧЕЙ</span><span class="dm"></span>
-        <span>NEXT: 21.11 — <b>KKK</b> VS <b>NEXUS FIVE</b></span><span class="dm"></span>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- ================= КТО МЫ ================= -->
@@ -862,10 +834,6 @@ setInterval(() => {
   document.getElementById('cd-m').textContent = p2(m);
   document.getElementById('cd-s').textContent = p2(s);
 }, 1000);
-
-// ---------- дублируем бегущую строку ----------
-const tin = document.getElementById('tickerIn');
-tin.innerHTML += tin.innerHTML;
 
 // ---------- модалка «вызвать на матч» ----------
 const modal = document.getElementById('monkeyModal');
