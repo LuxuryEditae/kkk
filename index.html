@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KKK — Клан Килеров · черный-красный</title>
+<meta name="description" content="KKK — Киберспортивный Клан Килеров. Черный, красный, Dota 2.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A0A0C'/%3E%3Cpath d='M8 52 L28 12 L36 12 L16 52 Z' fill='%23E10600'/%3E%3Cpath d='M28 52 L48 12 L56 12 L36 52 Z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1A0505;
+    --panel:#240A0A;
+    --panel2:#1D0707;
+    --line:#3D1414;
+    --red:#E10600;
+    --red2:#FF3524;
+    --white:#F4F3F1;
+    --gray:#A39696;
+    --gray-dk:#6E5C5C;
+    --head:'Oswald','Arial Narrow',sans-serif;
+    --body:'Rubik','Segoe UI',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--white);font-family:var(--body);line-height:1.65;overflow-x:hidden}
+  ::selection{background:var(--red);color:#fff}
+  img{max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+
+  /* чистый красный фон: мягкие световые пятна, без полосок */
+  body::before{
+    content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(900px 620px at 88% -8%, rgba(225,6,0,.30), transparent 70%),
+      radial-gradient(1000px 700px at -12% 34%, rgba(225,6,0,.16), transparent 72%),
+      radial-gradient(800px 900px at 110% 85%, rgba(225,6,0,.12), transparent 70%),
+      linear-gradient(180deg, rgba(0,0,0,.35) 0%, transparent 30%);
+  }
+  main,header,footer,.ticker{position:relative;z-index:1}
+
+  .slash{color:var(--red);font-weight:900}
+  .lbl{font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gray)}
+
+  /* ===== шапка ===== */
+  .topline{height:4px;background:linear-gradient(90deg,var(--red) 0 62%, #2b2b31 62% 100%)}
+  header{position:sticky;top:0;z-index:50;background:rgba(26,5,5,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;gap:34px;height:76px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white)}
+  .brand-mark{width:46px;height:46px;flex:none;position:relative;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
+  .brand-mark::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg, transparent 46%, var(--red) 46% 62%, transparent 62%)}
+  .brand-mark b{position:relative;font-family:var(--head);font-weight:700;font-size:13px;letter-spacing:.05em}
+  .brand-name{display:flex;flex-direction:column;line-height:1.1}
+  .brand-name b{font-family:var(--head);font-weight:700;font-size:25px;letter-spacing:.12em}
+  .brand-name span{font-size:9.5px;letter-spacing:.32em;color:var(--gray);text-transform:uppercase;margin-top:2px}
+  nav.main{display:flex;gap:30px;margin-left:auto}
+  nav.main a{
+    font-family:var(--head);font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gray);text-decoration:none;transition:color .2s;position:relative;
+  }
+  nav.main a i{font-style:normal;color:var(--red);font-weight:600;margin-right:7px;font-size:11px}
+  nav.main a::before{content:'';position:absolute;left:-14px;top:50%;width:0;height:2px;background:var(--red);transform:translateY(-50%) skewX(-20deg);transition:width .2s}
+  nav.main a:hover{color:var(--white)}
+  nav.main a:hover::before{width:8px}
+  .btn{
+    display:inline-block;font-family:var(--head);font-size:12.5px;font-weight:600;
+    letter-spacing:.22em;text-transform:uppercase;text-decoration:none;text-align:center;
+    padding:14px 28px;transition:all .18s;position:relative;
+    clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
+  }
+  .btn-red{background:var(--red);color:#fff}
+  .btn-red:hover{background:var(--red2)}
+  .btn-line{background:transparent;color:var(--white);box-shadow:inset 0 0 0 1.5px var(--line)}
+  .btn-line:hover{box-shadow:inset 0 0 0 1.5px var(--red);color:var(--red2)}
+  header .btn{padding:12px 22px;margin-left:10px}
+
+  /* ===== бегущая строка ===== */
+  .ticker{border-bottom:1px solid var(--line);background:#200606;overflow:hidden}
+  .tt{display:flex;white-space:nowrap;width:max-content;animation:tt 32s linear infinite}
+  .tt span{font-family:var(--head);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gray-dk);padding:9px 0}
+  .tt b{color:var(--white);font-weight:600}
+  .tt i{font-style:normal;color:var(--red);padding:0 16px;font-weight:700}
+  @keyframes tt{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ===== hero ===== */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .ghost{
+    position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);
+    font-family:var(--head);font-weight:700;font-size:clamp(220px,34vw,460px);line-height:1;
+    color:transparent;-webkit-text-stroke:1px rgba(225,6,0,.16);pointer-events:none;user-select:none;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:end}
+  .hero-left{padding:96px 0 84px;position:relative;z-index:2}
+  .chip{
+    display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);
+    background:rgba(36,10,10,.7);padding:8px 16px;margin-bottom:30px;
+    font-size:10.5px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gray);
+    clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+  }
+  .chip .dot{width:7px;height:7px;border-radius:50%;background:#2ecc71;box-shadow:0 0 8px #2ecc71;animation:pl 1.8s infinite}
+  @keyframes pl{0%,100%{opacity:1}50%{opacity:.3}}
+  .hero h1{
+    font-family:var(--head);font-weight:700;text-transform:uppercase;
+    font-size:clamp(84px,15vw,196px);line-height:.9;letter-spacing:.02em;
+    position:relative;width:max-content;color:var(--white);
+  }
+  /* красная диагональная полоса за буквами — как на логотипе */
+  .hero h1::before{
+    content:'';position:absolute;left:-6%;top:4%;width:112%;height:92%;z-index:-1;
+    background:linear-gradient(115deg, transparent 42%, rgba(225,6,0,.85) 42% 60%, transparent 60%);
+  }
+  .hero .h1-sub{
+    font-family:var(--head);font-weight:600;text-transform:uppercase;
+    font-size:clamp(13px,1.9vw,21px);letter-spacing:.32em;color:var(--red2);margin-top:18px;white-space:nowrap;
+  }
+  .hero .h1-sub i{font-style:normal;color:var(--gray)}
+  .hero .lede{margin-top:26px;max-width:520px;color:var(--gray);font-size:16px}
+  .hero .lede b{color:var(--white);font-weight:500}
+  .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+
+  .hero-right{position:relative;min-height:520px;display:flex;align-items:flex-end;justify-content:center}
+  .hero-right .beam{
+    position:absolute;inset:auto 0 -2px 0;height:180px;pointer-events:none;
+    background:radial-gradient(58% 100% at 50% 100%, rgba(225,6,0,.52), transparent 75%);
+  }
+  .hero-right .bigline{position:absolute;left:8%;right:6%;bottom:118px;height:2px;background:linear-gradient(90deg,transparent,var(--red) 20% 80%,transparent);opacity:.7}
+  .duo{position:relative;z-index:2;display:flex;align-items:flex-end;gap:0;width:min(92%,560px);transform:translateY(10px)}
+  .duo figure{flex:1;position:relative;filter:drop-shadow(0 26px 34px rgba(225,6,0,.16))}
+  .duo figure img{display:block;width:100%;position:relative;
+    -webkit-mask-image:linear-gradient(180deg,#000 72%,transparent 100%);
+            mask-image:linear-gradient(180deg,#000 72%,transparent 100%);
+  }
+  .duo .p-igor{transform:translateY(-14px)}
+  .duo .tag{
+    position:absolute;top:2%;left:50%;transform:translateX(-50%) skewX(-14deg);z-index:3;
+    background:var(--red);color:#fff;font-family:var(--head);font-weight:600;font-size:13px;
+    letter-spacing:.14em;padding:7px 16px;white-space:nowrap;
+  }
+  .duo .p-max .tag{background:#0F0F12;box-shadow:inset 0 0 0 1.5px var(--red);color:var(--white)}
+
+  .strip{border-top:1px solid var(--line);background:#200606;position:relative;z-index:2}
+  .strip .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .st{padding:26px 30px;border-right:1px solid var(--line);position:relative;overflow:hidden}
+  .st:last-child{border-right:none}
+  .st::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--red);transform:skewX(-12deg) translateY(-110%);transition:transform .3s}
+  .st:hover::before{transform:skewX(-12deg) translateY(0)}
+  .st .n{font-family:var(--head);font-weight:700;font-size:36px;line-height:1}
+  .st .n em{font-style:normal;color:var(--red)}
+  .st .t{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gray);margin-top:8px}
+
+  /* ===== секции ===== */
+  section{padding:96px 0}
+  section.tint{background:#220707;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:center;gap:22px;margin-bottom:16px}
+  .sec-head .no{
+    font-family:var(--head);font-weight:600;font-size:14px;color:#fff;background:var(--red);
+    padding:6px 12px;transform:skewX(-12deg);
+  }
+  .sec-head h2{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:clamp(30px,4.4vw,52px)}
+  .sec-head .rule{flex:1;height:1px;background:var(--line)}
+  .sec-sub{color:var(--gray);font-size:14px;max-width:680px;margin-bottom:52px}
+
+  /* ===== о клубе ===== */
+  .about{display:grid;grid-template-columns:1.5fr 1fr;gap:60px;align-items:start}
+  .clause{display:grid;grid-template-columns:58px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)}
+  .clause:first-of-type{border-top:none;padding-top:0}
+  .clause .s{font-family:var(--head);font-weight:600;font-size:20px;color:var(--red);transform:skewX(-8deg)}
+  .clause p{color:#B9B9C1;font-size:14.5px}
+  .clause p b{color:var(--white);font-weight:500}
+  .aside{background:var(--panel);border:1px solid var(--line);position:relative}
+  .aside::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red)}
+  .aside .ah{padding:16px 20px;border-bottom:1px solid var(--line);font-family:var(--head);font-weight:600;font-size:14px;letter-spacing:.24em;text-transform:uppercase}
+  .aside .ah i{font-style:normal;color:var(--red)}
+  .arow{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line)}
+  .arow:last-child{border-bottom:none}
+  .arow .k{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-dk);padding-top:3px}
+  .arow .v{font-size:13.5px;color:#C9C9D1}
+  .arow .v i{font-style:normal;color:var(--red2);font-weight:700}
+
+  /* ===== состав ===== */
+  .roster{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .card{
+    position:relative;background:var(--panel);border:1px solid var(--line);
+    padding:30px 30px 34px;overflow:hidden;transition:border-color .25s, transform .25s;
+  }
+  .card:hover{border-color:rgba(225,6,0,.55);transform:translateY(-4px)}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red) 0 34%, #2b2b31 34% 100%)}
+  .card .gnum{
+    position:absolute;right:14px;top:44px;font-family:var(--head);font-weight:700;
+    font-size:150px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(244,243,241,.07);
+    pointer-events:none;user-select:none;
+  }
+  .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;position:relative;z-index:2}
+  .pos{
+    font-family:var(--head);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--white);background:#2A0A0A;border:1px solid var(--line);padding:8px 14px;
+    clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%);
+  }
+  .pos i{font-style:normal;color:var(--red2)}
+  .photo{
+    position:relative;width:min(74%,330px);margin:6px auto 0;z-index:2;
+    filter:drop-shadow(0 22px 30px rgba(225,6,0,.14));
+    transition:transform .3s;
+  }
+  .card:hover .photo{transform:translateY(-6px)}
+  .photo img{display:block;width:100%;position:relative;
+    -webkit-mask-image:linear-gradient(180deg,#000 74%,transparent 100%);
+            mask-image:linear-gradient(180deg,#000 74%,transparent 100%);
+  }
+  .nick{font-family:var(--head);font-weight:700;font-size:clamp(27px,3.1vw,40px);letter-spacing:.03em;line-height:1.05;text-transform:uppercase;margin-top:14px;position:relative;z-index:2}
+  .nick span{color:var(--red)}
+  .alias{font-size:12.5px;color:var(--gray);letter-spacing:.06em;margin-top:4px;position:relative;z-index:2}
+  .alias b{color:var(--white);font-weight:500}
+  .crule{height:1px;background:var(--line);margin:18px 0 16px;position:relative}
+  .crule::before{content:'';position:absolute;left:0;top:-1px;width:64px;height:3px;background:var(--red)}
+  .bio{font-size:14px;color:#B9B9C1;position:relative;z-index:2}
+  .bio b{color:var(--white);font-weight:500}
+  .facts{list-style:none;margin:16px 0 22px;display:grid;position:relative;z-index:2}
+  .facts li{font-size:13.5px;color:#B9B9C1;padding:9px 0 9px 24px;position:relative;border-top:1px solid rgba(38,38,45,.6)}
+  .facts li::before{content:'//';position:absolute;left:0;top:9px;color:var(--red);font-weight:700;font-size:12px}
+  .facts li b{color:var(--white);font-weight:500}
+  .stat-rows{border-top:2px solid var(--line);position:relative;z-index:2}
+  .srow{display:grid;grid-template-columns:180px 1fr 44px;gap:16px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+  .srow .k{font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gray)}
+  .srow .bar{height:6px;background:#3A1313;transform:skewX(-18deg);overflow:hidden}
+  .srow .fill{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--red2));width:0;transition:width 1s cubic-bezier(.25,.7,.2,1)}
+  .srow .v{font-family:var(--head);font-weight:600;font-size:16px;color:var(--white);text-align:right}
+
+  /* ===== календарь ===== */
+  .next{
+    display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;
+    background:linear-gradient(90deg, rgba(225,6,0,.16), var(--panel) 46%);
+    border:1px solid rgba(225,6,0,.4);padding:24px 30px;margin-bottom:40px;
+    clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px));
+  }
+  .next .tag{
+    background:var(--red);color:#fff;font-family:var(--head);font-size:11px;font-weight:600;
+    letter-spacing:.26em;text-transform:uppercase;padding:10px 16px;
+    clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+  }
+  .next .ttl{font-family:var(--head);font-weight:600;font-size:23px;letter-spacing:.04em;text-transform:uppercase}
+  .next .ttl i{font-style:normal;color:var(--red2)}
+  .next .sub{color:var(--gray);font-size:13px;margin-top:5px}
+  .cd{display:flex;gap:10px}
+  .cdc{background:#2A0A0A;border:1px solid var(--line);min-width:64px;text-align:center;padding:8px 6px;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+  .cdc .v{font-family:var(--head);font-weight:700;font-size:25px;color:var(--red2)}
+  .cdc .l{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gray-dk);margin-top:2px}
+
+  table.cal{width:100%;border-collapse:collapse;border-top:2px solid var(--line)}
+  table.cal th{
+    font-family:var(--head);font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;
+    color:#fff;background:var(--red);text-align:left;padding:14px 16px;border:none;
+  }
+  table.cal td{padding:15px 16px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top;color:#C9C9D1}
+  table.cal tr:hover td{background:rgba(225,6,0,.045)}
+  td .d{font-family:var(--head);font-weight:600;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--white)}
+  td .dt{font-size:11px;color:var(--gray-dk);letter-spacing:.08em}
+  td .ev b{color:var(--white);font-weight:500}
+  td .ev i{font-style:normal;color:var(--red2);font-weight:700}
+  td .tm{font-family:var(--head);font-weight:600;font-size:15px;color:var(--white);white-space:nowrap}
+  tr.next-row td{background:rgba(225,6,0,.08)}
+  tr.next-row td:first-child{border-left:4px solid var(--red)}
+  .flag{display:inline-block;background:var(--red);color:#fff;font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:3px 8px;margin-bottom:5px}
+  .cal-note{font-size:12.5px;color:var(--gray-dk);margin-top:14px}
+  .cal-note b{color:var(--red2)}
+
+  /* ===== заявления ===== */
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .q-card{background:var(--panel);border:1px solid var(--line);padding:26px 28px;position:relative;transition:border-color .25s}
+  .q-card:hover{border-color:rgba(225,6,0,.5)}
+  .q-card::before{
+    content:'//';position:absolute;top:14px;right:22px;font-family:var(--head);font-weight:700;
+    font-size:44px;color:rgba(225,6,0,.22);line-height:1;
+  }
+  .q-card p{font-size:14.5px;color:#C9C9D1;font-style:italic}
+  .q-card p b{color:var(--white);font-style:normal;font-weight:500}
+  .q-card .a{margin-top:16px;font-family:var(--head);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--red2)}
+  .q-card .a small{color:var(--gray-dk);letter-spacing:.1em;text-transform:uppercase;font-family:var(--body);font-weight:400}
+
+  /* ===== спонсоры ===== */
+  .partners{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#200606}
+  .partners .wrap{display:flex;align-items:center;justify-content:space-between;gap:26px;padding-top:24px;padding-bottom:24px;flex-wrap:wrap}
+  .partners .pl{font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gray-dk)}
+  .org{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:600;font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
+  .org i{font-style:normal;width:9px;height:9px;background:var(--red);transform:skewX(-14deg);display:inline-block}
+  .org.dead i{background:transparent;border:1.5px solid var(--gray-dk)}
+
+  /* ===== футер ===== */
+  footer{border-top:1px solid var(--line)}
+  footer .wrap{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap;padding-top:52px;padding-bottom:44px}
+  footer .brand-name b{color:var(--white)}
+  footer .desc{color:var(--gray-dk);font-size:12.5px;max-width:260px;margin-top:14px}
+  .fcol{min-width:150px}
+  .fcol .fh{font-family:var(--head);font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--white);margin-bottom:14px}
+  .fcol .fh i{font-style:normal;color:var(--red)}
+  .fcol a{display:block;color:var(--gray);text-decoration:none;font-size:13.5px;padding:4px 0;transition:color .2s,transform .2s}
+  .fcol a:hover{color:var(--red2);transform:translateX(4px)}
+  .fine{border-top:1px solid var(--line);padding:20px 0 26px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--gray-dk)}
+  .fine b{color:var(--red2)}
+
+  /* ===== reveal ===== */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.on{opacity:1;transform:none}
+
+  /* ===== адаптив ===== */
+  @media (max-width: 1020px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-left{padding:70px 0 40px}
+    .hero-right{min-height:420px}
+    .about,.roster,.quotes{grid-template-columns:1fr}
+    nav.main{display:none}
+    header .btn{display:none}
+    .next{grid-template-columns:1fr;gap:16px}
+    .strip .wrap{grid-template-columns:1fr 1fr}
+    .st{border-bottom:1px solid var(--line)}
+  }
+  @media (max-width: 600px){
+    .srow{grid-template-columns:125px 1fr 40px}
+    section{padding:64px 0}
+    .st{padding:20px 22px}
+    .hero .h1-sub{white-space:normal;letter-spacing:.18em;line-height:2}
+    .hero h1{letter-spacing:0}
+  }
+</style>
+</head>
+<body>
+
+<div class="topline"></div>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="brand-mark"><b>KKK</b></span>
+      <span class="brand-name"><b>KKK</b><span>Клан Килеров · Dota 2</span></span>
+    </a>
+    <nav class="main">
+      <a href="#about"><i>01</i>Клуб</a>
+      <a href="#roster"><i>02</i>Состав</a>
+      <a href="#calendar"><i>03</i>Календарь</a>
+      <a href="#press"><i>04</i>Заявления</a>
+    </nav>
+    <a class="btn btn-red" href="#calendar">Следующий матч</a>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="tt" id="tt">
+    <span><b>1G0R</b> СНОВА СКАЧАЛ НЕ ТО <i>//</i> <b>SHESTOPEROV_GOD</b> ВСЁ ЕЩЁ В ШАПКЕ <i>//</i> ПИНГ ПО ШТАТУ — 240 <i>//</i> ДВЕРЬ ОТКРЫТА. СОСЕД ДОВОЛЕН <i>//</i> ТИТУЛ «ЛУЧШИЕ В ПОДЪЕЗДЕ» ЗАЩИЩЁН <i>//</i> СТУЛ ИГОРЯ ПРОШЁЛ ТЕХОСМОТР <i>//</i> </span>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="ghost">KKK</div>
+    <div class="wrap hero-grid">
+      <div class="hero-left">
+        <div class="chip"><span class="dot"></span>Сезон 2026 · Дивизион «Район» · Открытый кубок</div>
+        <h1>KKK</h1>
+        <div class="h1-sub"><i>//</i> Клан Килеров <i>·</i> Dota 2 <i>//</i></div>
+        <p class="lede"><b>Два игрока. Один район. Ноль страха.</b> Мы не выбираем героев — герои выбирают нас, потому что остальные слоты заняты. Играем в чёрно-красном, живём на пинге 240.</p>
+        <div class="hero-cta">
+          <a class="btn btn-red" href="#roster">Состав</a>
+          <a class="btn btn-line" href="#calendar">Календарь</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="beam"></div>
+        <div class="bigline"></div>
+        <div class="duo">
+          <figure class="p-igor"><span class="tag">1G0R</span><img src="assets/igor_cut.png" alt="1G0R — Игорь"></figure>
+          <figure class="p-max"><span class="tag">SHESTOPEROV_GOD</span><img src="assets/max_cut.png" alt="SHESTOPEROV_GOD — Макс"></figure>
+        </div>
+      </div>
+    </div>
+    <div class="strip">
+      <div class="wrap">
+        <div class="st reveal"><div class="n">2</div><div class="t">игрока в составе</div></div>
+        <div class="st reveal"><div class="n">51<em>%</em></div><div class="t">winrate · примерно</div></div>
+        <div class="st reveal"><div class="n">240</div><div class="t">мс пинга · закаляет</div></div>
+        <div class="st reveal"><div class="n">3</div><div class="t">титула «Лучшие в подъезде»</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 КЛУБ -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="no">01</span>
+        <h2>Клуб</h2>
+        <span class="rule"></span>
+      </div>
+      <p class="sec-sub">Киберспортивный Клан Килеров. Основан в 2024-м, играет в чёрно-красном с самого первого дня — совпадение? Нет. Регламент.</p>
+      <div class="about">
+        <div class="clauses reveal">
+          <div class="clause"><div class="s">§1</div><p>Название — <b>KKK</b>, полное — <b>Киберспортивный Клан Килеров</b>. Сокращённый вариант в чате — «ки-ки-ки». Это не смех, это аббревиатура.</p></div>
+          <div class="clause"><div class="s">§2</div><p>База — <b>квартира Играйка</b>. Аналитический центр — <b>кухня</b>. Буткемп — <b>балкон</b>, сезонно, с октября по апрель.</p></div>
+          <div class="clause"><div class="s">§3</div><p>Стратегия неизменна: <b>пока соперник разбирает нашу игру, мы разбираем их троны.</b> Разрешается одновременно. Прецеденты имеются.</p></div>
+          <div class="clause"><div class="s">§4</div><p><b>Баны запрещены.</b> Клуб даёт героям шанс. Последствия принимает на себя и страдает гордо.</p></div>
+          <div class="clause"><div class="s">§5</div><p>Генеральный спонсор — <b>мама Макса</b>. Контракт действует до «когда ты уже остепенишься» включительно и продлевается каждый вечер за ужином.</p></div>
+          <div class="clause"><div class="s">§6</div><p><b>Дверь открывает Игорь.</b> Всегда. В том числе во время решающего пуша. Исключений нет, и это, по мнению клуба, его усиливает.</p></div>
+        </div>
+        <aside class="aside reveal">
+          <div class="ah">Реквизиты <i>// клуба</i></div>
+          <div class="arow"><div class="k">Основание</div><div class="v">2024 · слияние двух очередей в матчмейкинге</div></div>
+          <div class="arow"><div class="k">Дивизион</div><div class="v">«Район» · открытый кубок</div></div>
+          <div class="arow"><div class="k">Титулы</div><div class="v"><i>3 ×</i> «Лучшие в подъезде» (2024–2026)</div></div>
+          <div class="arow"><div class="k">Девиз</div><div class="v">«Опасные после 19:00»</div></div>
+          <div class="arow"><div class="k">Форма</div><div class="v">чёрно-красная. Другую не носят, другой нет</div></div>
+          <div class="arow"><div class="k">Штаб</div><div class="v">Подъезд №4, 3-й этаж, до второго звонка</div></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 СОСТАВ -->
+  <section id="roster" class="tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="no">02</span>
+        <h2>Состав</h2>
+        <span class="rule"></span>
+      </div>
+      <p class="sec-sub">Основной состав на сезон 2026. Номера закреплены регламентом и потолком в коридоре.</p>
+
+      <div class="roster">
+
+        <!-- 1G0R -->
+        <article class="card reveal">
+          <div class="gnum">01</div>
+          <div class="card-top">
+            <span class="pos">Позиция <i>1</i> · Керри</span>
+          </div>
+          <div class="photo"><img src="assets/igor_cut.png" alt="1G0R — Игорь, керри команды KKK"></div>
+          <div class="nick">1G<span>0</span>R</div>
+          <div class="alias">Игорь · <b>«Неуклюжий, но точный»</b></div>
+          <div class="crule"></div>
+          <p class="bio">Главный керри и главный источник хаоса. <b>Может уронить мышку, стул и кружку — но не промахнётся.</b> Последний, кто качает скилл на статистику, и первый, кто открывает дверь незнакомцам. В прямом эфире. С улыбкой.</p>
+          <ul class="facts">
+            <li>Хотел скачать патч — <b>скачал аудиокнигу «Как перестать беспокоиться»</b>. Прослушал дважды. Помогло ровно до первой игры</li>
+            <li><b>Открывает дверь незнакомцам.</b> Единственный игрок лиги со 100% winrate против визитёров и курьеров</li>
+            <li>Дважды ставил паузу из-за «шума на кухне». Оба раза это был его стул, падающий от его же локтя</li>
+            <li>Точность скиллов — 98%. Точность попадания по стулу, когда встаёт с чаем — 12%</li>
+          </ul>
+          <div class="stat-rows">
+            <div class="srow"><span class="k">Точность</span><span class="bar"><span class="fill" data-w="98"></span></span><span class="v">98</span></div>
+            <div class="srow"><span class="k">Неуклюжесть</span><span class="bar"><span class="fill" data-w="97"></span></span><span class="v">97</span></div>
+            <div class="srow"><span class="k">Клатчи</span><span class="bar"><span class="fill" data-w="88"></span></span><span class="v">88</span></div>
+            <div class="srow"><span class="k">Открывание дверей</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100</span></div>
+            <div class="srow"><span class="k">Скачивает не то</span><span class="bar"><span class="fill" data-w="93"></span></span><span class="v">93</span></div>
+          </div>
+        </article>
+
+        <!-- SHESTOPEROV_GOD -->
+        <article class="card reveal">
+          <div class="gnum">02</div>
+          <div class="card-top">
+            <span class="pos">Позиция <i>2</i> · Мид · Капитан</span>
+          </div>
+          <div class="photo"><img src="assets/max_cut.png" alt="SHESTOPEROV_GOD — Макс, мидер и капитан команды KKK"></div>
+          <div class="nick">SHESTOPEROV_<span>GOD</span></div>
+          <div class="alias">Макс Шестопёров · <b>«Шапка. Порядок. Мид.»</b></div>
+          <div class="crule"></div>
+          <p class="bio">Капитан, мидер и человек-будильник команды. <b>Спокоен, как удав с полной маной.</b> Тильтил один раз в жизни — соседи вызывали службы. Играет в шапке: утверждает, что шапка даёт +5 к мане и −10 к вниманию соперника.</p>
+          <ul class="facts">
+            <li>Мидит в шапке даже летом. <b>«Это не аксессуар. Это билд»</b></li>
+            <li>Однажды выиграл 1v5. Потом выяснилось, что это был реплей. <b>Но блеск в глазах был настоящий</b></li>
+            <li>Ведёт блокнот с «контрпиками против рандомов». Половина страниц — один и тот же герой, обведённый трижды</li>
+            <li>Говорит Игорю «не открывай дверь» каждый вечер. В 21:40 Игорь всё равно открывает</li>
+          </ul>
+          <div class="stat-rows">
+            <div class="srow"><span class="k">Микроконтроль</span><span class="bar"><span class="fill" data-w="92"></span></span><span class="v">92</span></div>
+            <div class="srow"><span class="k">Спокойствие</span><span class="bar"><span class="fill" data-w="99"></span></span><span class="v">99</span></div>
+            <div class="srow"><span class="k">Шапконошение</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100</span></div>
+            <div class="srow"><span class="k">Уровень тильтa</span><span class="bar"><span class="fill" data-w="4"></span></span><span class="v">4</span></div>
+            <div class="srow"><span class="k">Вера в Игоря</span><span class="bar"><span class="fill" data-w="76"></span></span><span class="v">76</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 КАЛЕНДАРЬ -->
+  <section id="calendar">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="no">03</span>
+        <h2>Календарь</h2>
+        <span class="rule"></span>
+      </div>
+      <p class="sec-sub">Расписание утверждено капитаном. Время московское. Игорь обещал не опаздывать — поэтому расписанию верят больше, чем Игорю.</p>
+
+      <div class="next reveal">
+        <span class="tag">Следующий матч</span>
+        <div>
+          <div class="ttl">KKK <i>vs</i> Титаны Подъезда №9</div>
+          <div class="sub">Кубок «Дотер с района» · BO3 · суббота, 18:00 · трансляция через плечо Игоря</div>
+        </div>
+        <div class="cd">
+          <div class="cdc"><div class="v" id="cd-d">–</div><div class="l">дней</div></div>
+          <div class="cdc"><div class="v" id="cd-h">–</div><div class="l">часов</div></div>
+          <div class="cdc"><div class="v" id="cd-m">–</div><div class="l">минут</div></div>
+          <div class="cdc"><div class="v" id="cd-s">–</div><div class="l">секунд</div></div>
+        </div>
+      </div>
+
+      <table class="cal reveal">
+        <thead>
+          <tr><th style="width:160px">Дата</th><th>Матч / событие</th><th>Турнир</th><th style="width:90px;text-align:right">Время</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="d">Понедельник</div><div class="dt">09.11.2026</div></td>
+            <td class="ev"><b>KKK</b> <i>vs</i> Боты «Хард»</td>
+            <td>Тренировка. Игорю запрещено открывать дверь до 21:00</td>
+            <td class="tm" style="text-align:right">19:00</td>
+          </tr>
+          <tr>
+            <td><div class="d">Вторник</div><div class="dt">10.11.2026</div></td>
+            <td class="ev"><b>KKK</b> <i>vs</i> Пинг 300</td>
+            <td>Кубок «Дотер с района» · групповой этап</td>
+            <td class="tm" style="text-align:right">20:00</td>
+          </tr>
+          <tr>
+            <td><div class="d">Среда</div><div class="dt">11.11.2026</div></td>
+            <td class="ev">Разбор полётов</td>
+            <td>Реплеи, компот, установление виновного (это всегда Игорь)</td>
+            <td class="tm" style="text-align:right">21:30</td>
+          </tr>
+          <tr>
+            <td><div class="d">Четверг</div><div class="dt">12.11.2026</div></td>
+            <td class="ev"><b>KKK</b> <i>vs</i> Сельджуки ЖСК</td>
+            <td>Подъездная премьер-лига · матч недели</td>
+            <td class="tm" style="text-align:right">19:30</td>
+          </tr>
+          <tr>
+            <td><div class="d">Пятница</div><div class="dt">13.11.2026</div></td>
+            <td class="ev"><b>KKK</b> <i>vs</i> Рандомы Всея Руси</td>
+            <td>Фри-пати. Игорь качает «тот самый» трек для вайба. Опять не то</td>
+            <td class="tm" style="text-align:right">22:00</td>
+          </tr>
+          <tr class="next-row">
+            <td><span class="flag">Следующий</span><div class="d">Суббота</div><div class="dt">14.11.2026</div></td>
+            <td class="ev"><b>KKK</b> <i>vs</i> Титаны Подъезда №9</td>
+            <td>Кубок «Дотер с района» · BO3 · главный матч недели</td>
+            <td class="tm" style="text-align:right">18:00</td>
+          </tr>
+          <tr>
+            <td><div class="d">Воскресенье</div><div class="dt">15.11.2026</div></td>
+            <td class="ev" style="color:var(--gray)">День отдыха</td>
+            <td>Официально — отдых. Неофициально — Игорь зайдёт «на минутку»</td>
+            <td class="tm" style="text-align:right">12:00</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="cal-note">* Перенос матча возможен за 30 минут до начала по причине <b>«ещё одна катка»</b>. Основание: прецедент.</div>
+    </div>
+  </section>
+
+  <!-- 04 ЗАЯВЛЕНИЯ -->
+  <section id="press" class="tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="no">04</span>
+        <h2>Заявления</h2>
+        <span class="rule"></span>
+      </div>
+      <p class="sec-sub">Официальные заявления состава. Для прессы, соседей и мамы Макса.</p>
+      <div class="quotes">
+        <div class="q-card reveal">
+          <p>«Я не неуклюжий. Я проверяю, крепко ли держится пол. Держится. <b>Всегда держится.</b> Особенно когда я с чаем».</p>
+          <div class="a">— 1G0R <small>· керри · после третьего падения стула за вечер</small></div>
+        </div>
+        <div class="q-card reveal">
+          <p>«Признавайся, Igor, я сказал „скачай доту“. Как ты умудрился скачать „вязание для начинающих“ — отдельный талант. <b>Вот и вся меткость:</b> в игре попадаешь, а тут нет».</p>
+          <div class="a">— SHESTOPEROV_GOD <small>· капитан · среда, 21:47</small></div>
+        </div>
+        <div class="q-card reveal">
+          <p>«Звонок в дверь во время решающего пуша — это не помеха. Это психологическая тренировка. Я играл и открывал одновременно. <b>Мы выиграли, и маляр тоже доволен».</b></p>
+          <div class="a">— 1G0R <small>· об уникальном стиле игры</small></div>
+        </div>
+        <div class="q-card reveal">
+          <p>«Моя шапка — не стиль. Это стратегия. Противник смотрит на шапку и теряет фокус. <b>Работает на сто процентов.</b> Иногда сам теряю фокус, но это детали».</p>
+          <div class="a">— SHESTOPEROV_GOD <small>· капитан · дисс на мидеров района</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- СПОНСОРЫ -->
+  <div class="partners">
+    <div class="wrap">
+      <span class="pl">Партнёры клуба</span>
+      <span class="org"><i></i>Мама Макса</span>
+      <span class="org"><i></i>Компот «Домашний»</span>
+      <span class="org"><i></i>Подъезд №4</span>
+      <span class="org dead"><i></i>Стул Игоря (на лекарствах)</span>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#top" style="text-decoration:none">
+        <span class="brand-mark"><b>KKK</b></span>
+        <span class="brand-name"><b>KKK</b><span>Клан Килеров · Dota 2</span></span>
+      </a>
+      <p class="desc">Чёрно-красный клуб из одного подъезда. Играем громко, дверь открываем всем.</p>
+    </div>
+    <div class="fcol">
+      <div class="fh"><i>//</i> Клуб</div>
+      <a href="#about">О клубе</a>
+      <a href="#roster">Состав</a>
+      <a href="#calendar">Календарь</a>
+    </div>
+    <div class="fcol">
+      <div class="fh"><i>//</i> Медиа</div>
+      <a href="#">Телеграм</a>
+      <a href="#">Ютуб</a>
+      <a href="#">Дискорд</a>
+    </div>
+    <div class="fcol">
+      <div class="fh"><i>//</i> Приёмная</div>
+      <a href="#">Аккредитация прессы (стучать)</a>
+      <a href="#">Жалобы на Игоря (очередь)</a>
+      <a href="#">Вопросы к шапке</a>
+    </div>
+  </div>
+  <div class="wrap fine">
+    <div>© 2026 KKK Esports Club · Киберспортивный Клан Килеров</div>
+    <div>чёрно-красные · с района · пинг <b>240</b></div>
+  </div>
+</footer>
+
+<script>
+  // бегущая строка
+  const tt = document.getElementById('tt');
+  tt.innerHTML += tt.innerHTML;
+
+  // появление при скролле
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // полоски статов
+  const sio = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.fill').forEach(f => { f.style.width = f.dataset.w + '%'; });
+        sio.unobserve(e.target);
+      }
+    });
+  }, { threshold: .1 });
+  document.querySelectorAll('.stat-rows').forEach(el => sio.observe(el));
+
+  // обратный отсчёт до ближайшей субботы 18:00
+  function nextMatch() {
+    const now = new Date();
+    const t = new Date(now);
+    t.setDate(now.getDate() + ((6 - now.getDay() + 7) % 7));
+    t.setHours(18, 0, 0, 0);
+    if (t <= now) t.setDate(t.getDate() + 7);
+    return t;
+  }
+  let target = nextMatch();
+  const p = n => String(n).padStart(2, '0');
+  function tickCd() {
+    let d = target - new Date();
+    if (d < 0) { target = nextMatch(); d = target - new Date(); }
+    cdD.textContent = p(Math.floor(d / 864e5));
+    cdH.textContent = p(Math.floor(d / 36e5) % 24);
+    cdM.textContent = p(Math.floor(d / 6e4) % 60);
+    cdS.textContent = p(Math.floor(d / 1e3) % 60);
+  }
+  const cdD = document.getElementById('cd-d'), cdH = document.getElementById('cd-h'),
+        cdM = document.getElementById('cd-m'), cdS = document.getElementById('cd-s');
+  tickCd(); setInterval(tickCd, 1000);
+</script>
+
+</body>
+</html>
