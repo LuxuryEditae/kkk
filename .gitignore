@@ -1,3 +1,8 @@
-igor.png
-maxc.png
-_process/
+# исходники фото (не для сайта)
+/fon.webp
+/igor.webp
+/maxc.webp
+/tomp.webp
+/obeziana.jpg
+# рабочие скрипты
+/_process/
