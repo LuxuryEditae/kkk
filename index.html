@@ -64,7 +64,7 @@ button{font-family:inherit}
 }
 .nav.scrolled{background:rgba(10,10,13,.82);backdrop-filter:blur(14px);border-color:var(--line)}
 .nav-in{
-  width:min(1800px,94vw);margin:0 auto;height:64px;
+  width:min(2400px,94vw);margin:0 auto;height:64px;
   display:flex;align-items:center;justify-content:space-between;gap:20px;
 }
 .nav-cta{
@@ -83,11 +83,11 @@ button{font-family:inherit}
 .nav-links a:hover::after{width:100%}
 @media(max-width:760px){.nav-links{display:none}}
 
-.hero .container{width:min(1800px,94vw)}
+.hero .container{width:min(2400px,94vw)}
 
 /* ---------- hero ---------- */
 .hero{
-  position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;
+  position:relative;min-height:100vh;display:flex;flex-direction:column;
   overflow:hidden;background:
     radial-gradient(90vw 60vh at 70% 108%,rgba(122,8,18,.55),transparent 60%),
     radial-gradient(60vw 40vh at 12% -10%,rgba(232,23,43,.10),transparent 60%),
@@ -159,9 +159,9 @@ button{font-family:inherit}
 .sp-b{left:87%}
 .sp-front{left:65%}
 @media(min-width:1500px){
-  .sp-a{left:38%}
-  .sp-b{left:82%}
-  .sp-front{left:56%}
+  .sp-a{left:40%}
+  .sp-b{left:84%}
+  .sp-front{left:58%}
 }
 @media(max-width:760px){
   .sp-a{left:18%}
@@ -203,18 +203,26 @@ button{font-family:inherit}
     linear-gradient(115deg,transparent 47%,rgba(255,255,255,.025) 47.5%,rgba(255,255,255,.025) 48.2%,transparent 48.7%);
 }
 .hero-est{
-  position:absolute;right:max(4vw,calc((100vw - 1800px)/2));top:38vh;z-index:5;
+  position:absolute;right:max(4vw,calc((100vw - 2400px)/2));top:38vh;z-index:5;
   writing-mode:vertical-rl;font-family:var(--mono);font-size:11px;letter-spacing:.5em;
   color:#8a8794;text-transform:uppercase;
 }
 .hero-brandline{
-  position:absolute;top:108px;right:max(4vw,calc((100vw - 1800px)/2));z-index:5;
+  position:absolute;top:108px;right:max(4vw,calc((100vw - 2400px)/2));z-index:5;
   font-family:var(--disp);font-weight:800;font-size:clamp(30px,3.6vw,54px);
   text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;
   color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.16);
 }
 @media(max-width:1150px){.hero-brandline{display:none}}
+@media(min-width:2200px){
+  .hero-title{font-size:415px}
+  .hero-brandline{font-size:64px}
+}
 @media(max-width:1150px){.hero-brandline{display:none}}
+@media(min-width:2200px){
+  .hero-title{font-size:415px}
+  .hero-brandline{font-size:64px}
+}
 @media(max-width:900px){.hero-est,.hero-slash{display:none}}
 
 /* ---------- секции общие ---------- */
@@ -538,9 +546,9 @@ footer{border-top:1px solid var(--line);background:var(--bg);position:relative;o
   <div class="squad-glow" id="squadGlow"></div>
   <div class="hero-floor"></div>
   <div class="hero-squad">
-    <div class="sp sp-a"><img src="assets/maxc_cut.webp" alt="SHESTOPEROV_GOD" style="height:min(51vh,545px)"><span class="tag">02 · SHESTOPEROV_GOD</span></div>
-    <div class="sp sp-b"><img src="assets/tomp_cut.webp" alt="Tom Perl" style="height:min(54vh,575px)"><span class="tag">03 · TOM PERL</span></div>
-    <div class="sp sp-front"><img src="assets/igor_cut.webp" alt="igorstani" style="height:min(45vh,480px)"><span class="tag">01 · igorstani</span></div>
+    <div class="sp sp-a"><img src="assets/maxc_cut.webp" alt="SHESTOPEROV_GOD" style="height:51vh"><span class="tag">02 · SHESTOPEROV_GOD</span></div>
+    <div class="sp sp-b"><img src="assets/tomp_cut.webp" alt="Tom Perl" style="height:54vh"><span class="tag">03 · TOM PERL</span></div>
+    <div class="sp sp-front"><img src="assets/igor_cut.webp" alt="igorstani" style="height:45vh"><span class="tag">01 · igorstani</span></div>
   </div>
 
 </section>
